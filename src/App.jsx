@@ -40,8 +40,12 @@ const Contenedor = styled.div`
 const Imagen = styled.img`
   max-width: 400px;
   width: 80%;
-  margin: 100px auto 0 auto;
+  margin: 20px auto 0 auto;
   display: block;
+
+  @media (max-width: 768px){
+    width: 50%;
+  }
 `;
 
 function App() {

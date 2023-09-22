@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 import styled from "@emotion/styled"
 
 const Contenedor = styled.div`
@@ -31,9 +32,20 @@ const Imagen = styled.img`
 
 
 const Resultado = ({ resultado }) => {
+
+    const container = useRef(null);
     const { PRICE, HIGHDAY, LOWDAY, CHANGEPCT24HOUR, IMAGEURL, LASTUPDATE} = resultado
+
+    useEffect(() => {
+        if (container.current) {
+            container.current.scrollIntoView({
+                behavior: 'smooth'
+            })
+        }
+    }, [resultado]);
+
   return (
-    <Contenedor>
+    <Contenedor ref={container}>
         <Imagen src={`https://cryptocompare.com/${IMAGEURL}`} alt="Imagen Crypto" />
         <div>
             <Precio>El precio es de:{' '}
